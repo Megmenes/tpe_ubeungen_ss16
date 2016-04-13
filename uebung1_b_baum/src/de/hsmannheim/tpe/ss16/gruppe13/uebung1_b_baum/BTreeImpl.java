@@ -3,9 +3,9 @@ package de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum;
 public class BTreeImpl implements BTree{
 
 	private final static int STANDARD_ORDNUNG = 3;
-	private int ordnung;
+	public int ordnung;
 	private BTreeNode root;
-	
+
 	/**
 	 * Constructor <code>BTreeImpl(int ordnung)</code>
 	 * creates a BTree with a ordnung
@@ -13,6 +13,7 @@ public class BTreeImpl implements BTree{
 	 */
 	public BTreeImpl(int ordnung) {
 		setOrdnung(ordnung);
+		root = new BTreeNode();
 	}
 	
 	
@@ -41,6 +42,7 @@ public class BTreeImpl implements BTree{
 		return false;
 	}
 
+	
 	@Override
 	public boolean insert(String filename) {
 		// TODO Auto-generated method stub
