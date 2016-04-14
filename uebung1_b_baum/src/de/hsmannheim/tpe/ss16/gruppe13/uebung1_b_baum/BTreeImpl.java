@@ -28,6 +28,10 @@ public class BTreeImpl implements BTree{
 		}
 	}
 	
+	public boolean isavail(Comparable key) {
+		return root.search(key);
+	}
+	
 	/** Method <code>int getOrdnung ()</code> returns
 	 * BTree's Ordnung
 	 * @return int BTree's Ordnung
@@ -63,19 +67,20 @@ public class BTreeImpl implements BTree{
 
 	@Override
 	public int height() {
-		// TODO Auto-generated method stub
+		Math.log(ordnung); // Höhe ist logarithmisch in	der	Anzahl	der	gespeicherten Schlüssel	beschränkt.	
 		return 0;
 	}
 
 	@Override
 	public Integer getMax() {
-		// TODO Auto-generated method stub
+//		System.out.println("Das Maximum der Knoten ist: " + 2 * ordnung);
 		return null;
 	}
 
 	@Override
 	public Integer getMin() {
-		// TODO Auto-generated method stub
+//		System.out.println("Das Minimum der Knoten ist:" + ordnung);
+//		System.out.println("Das Minimum der Knoten ist min 1");
 		return null;
 	}
 
