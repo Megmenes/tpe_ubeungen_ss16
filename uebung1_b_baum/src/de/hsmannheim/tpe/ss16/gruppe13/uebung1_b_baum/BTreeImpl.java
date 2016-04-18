@@ -3,7 +3,7 @@ package de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum;
 public class BTreeImpl implements BTree{
 
 	private final static int STANDARD_ORDNUNG = 3;
-	public int ordnung;
+	private int ordnung;
 	private BTreeNode root;
 
 	/**
@@ -26,6 +26,10 @@ public class BTreeImpl implements BTree{
 		} else {
 			this.ordnung = ordnung;
 		}
+	}
+	
+	public boolean isavail(Comparable key) {
+		return root.search(key);
 	}
 	
 	/** Method <code>int getOrdnung ()</code> returns
@@ -63,19 +67,20 @@ public class BTreeImpl implements BTree{
 
 	@Override
 	public int height() {
-		// TODO Auto-generated method stub
+		Math.log(ordnung); // H�he ist logarithmisch in	der	Anzahl	der	gespeicherten Schl�ssel	beschr�nkt.	
 		return 0;
 	}
 
 	@Override
 	public Integer getMax() {
-		// TODO Auto-generated method stub
+//		System.out.println("Das Maximum der Knoten ist: " + 2 * ordnung);
 		return null;
 	}
 
 	@Override
 	public Integer getMin() {
-		// TODO Auto-generated method stub
+//		System.out.println("Das Minimum der Knoten ist:" + ordnung);
+//		System.out.println("Das Minimum der Knoten ist min 1");
 		return null;
 	}
 
