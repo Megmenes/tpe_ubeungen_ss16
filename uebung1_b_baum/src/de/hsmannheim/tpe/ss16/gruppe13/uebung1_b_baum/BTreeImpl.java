@@ -94,7 +94,7 @@ public class BTreeImpl implements BTree{
 	@Override
 	public boolean isEmpty() {
 		//if root == null then Tree is empty
-		//else the Tree has Nodes and therefor
+		//else the Tree has Nodes and therefore
 		//is not empty
 		if(root == null) {
 			return true;
@@ -117,14 +117,43 @@ public class BTreeImpl implements BTree{
 
 	@Override
 	public void printPostorder() {
-		// TODO Auto-generated method stub
-		
+		printPostorder(this.root);
 	}
 
+	public void printPostorder(BTreeNode node) {
+		if(node != null){
+			for(int i=0; i < node.getReference().length; i++){
+				if(node.getReference()[i] != null){
+					printPostorder(node.getReference()[i]);
+				}
+			}
+			for(int i=0; i<node.getElement().length;i++){
+				if(node.getElement()[i] != null){
+					print(node.getElement()[i] + "  ");
+				}
+			}
+		}
+	}
+	
+	
 	@Override
 	public void printPreorder() {
-		// TODO Auto-generated method stub
-		
+		printPreorder(this.root);
+	}
+	
+	public void printPreorder(BTreeNode node) {
+		if(node != null){
+			for(int i=0; i<node.getElement().length;i++){
+				if(node.getElement()[i] != null){
+					print(node.getElement()[i] + "  ");
+				}
+			}
+			for(int i=0; i < node.getReference().length; i++){
+				if(node.getReference()[i] != null){
+					printPostorder(node.getReference()[i]);
+				}
+			}
+		}
 	}
 
 	@Override

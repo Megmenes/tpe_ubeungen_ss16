@@ -1,7 +1,5 @@
 package de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum;
 
-import de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum.Test.Node;
-
 class BTreeNode {
 	private int ordnung;
 	private int countkey = 0;
@@ -86,5 +84,15 @@ class BTreeNode {
 	
 	private boolean isLeaf() {
 		return (child[0] == null);
+	}
+
+	public int getElement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getReference() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
