@@ -1,19 +1,18 @@
 package de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum;
 
-public class BTreeImpl implements BTree{
+public class BTreeImplP implements BTree{
 
 	private final static int STANDARD_ORDNUNG = 3;
 	private int ordnung;
-	private BTreeNode root;
+	private BTreeNodeP root;
 
 	/**
 	 * Constructor <code>BTreeImpl(int ordnung)</code>
 	 * creates a BTree with a ordnung
 	 * @param int ordnung
 	 */
-	public BTreeImpl(int ordnung) {
+	public BTreeImplP(int ordnung) {
 		setOrdnung(ordnung);
-		root = new BTreeNode();
 	}
 	
 	
@@ -28,10 +27,6 @@ public class BTreeImpl implements BTree{
 		}
 	}
 	
-	public boolean isavail(Comparable key) {
-		return root.search(key);
-	}
-	
 	/** Method <code>int getOrdnung ()</code> returns
 	 * BTree's Ordnung
 	 * @return int BTree's Ordnung
@@ -42,7 +37,11 @@ public class BTreeImpl implements BTree{
 	
 	@Override
 	public boolean insert(Integer o) {
-		// TODO Auto-generated method stub
+		Comparable val = o;
+		
+		//if tree is empty, meaning root == null
+		//create a new BTreeNode and add the value
+		
 		return false;
 	}
 
@@ -131,5 +130,14 @@ public class BTreeImpl implements BTree{
 	public void printLevelorder() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	private BTreeNodeP findInsertNode(Comparable val) {
+		return null;
+	}
+	
+	private BTreeNodeP recFindInsertNode(BTreeNodeP currNode, Comparable val) {
+		
+		return null;
 	}
 }
