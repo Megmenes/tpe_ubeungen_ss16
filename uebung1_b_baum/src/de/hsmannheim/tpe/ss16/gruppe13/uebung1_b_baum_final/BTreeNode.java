@@ -33,24 +33,28 @@ class BTreeNode {
 		this.child = child;
 	}
 	
-	private boolean innerNode(){
+	private boolean notInnerNode(){
 		return (child[0] == null);
 	}
 	
 	public Comparable insert(Comparable newKey, BTreeNode returnNode){
-		if (isLeaf() == false){	//Knoten suchen
-			for(int i=0; i<child.length; i++){
-				if(i == keys.length || keys[i] == null){
-					newKey = child[i].insert(newKey, returnNode);
-					break;
+		if(searchval(newKey)){
+			System.out.println("Not added"); 
+			return null;
+		}
+			if (notInnerNode() == false){	//Knoten suchen
+				for(int i=0; i<child.length; i++){
+					if(i == keys.length || keys[i] == null){
+						newKey = child[i].insert(newKey, returnNode);
+						break;
+					}
+					if(isequal(i, newKey)){
+						return null;
+					}
+					else{
+						newKey = child[i].insert(newKey, returnNode);
+					}
 				}
-				if(isequal(i, newKey)){
-					return null;
-				}
-				else{
-					newKey = child[i].insert(newKey, returnNode);
-				}
-			}
 		}
 		if(newKey != null){
 			int i=0;
@@ -67,7 +71,7 @@ class BTreeNode {
 				switchKey = keys[i]; //Key zwischenspeichern
 				switchNode = child[i+1]; // Kind zwischenspeichern
 				keys[i] = newKey; //KeyPosition einfügen
-				child[i+1] = (newNode == null || isLeaf()) ? null :newNode; // if isLeaf = true -> null else newNode!
+				child[i+1] = (newNode == null || notInnerNode()) ? null :newNode; // if isLeaf = true -> null else newNode!
 				newKey = switchKey;
 				newNode = switchNode;
 				i += 1;
@@ -83,7 +87,7 @@ class BTreeNode {
 				switchNode.child[order-1] = child[order*2];
 				child[order*2] = null;
 				switchNode.keys[order-1] = newKey;
-				switchNode.child[order] = (newNode == null || isLeaf()) ? null : newNode; // if isLeaf = true -> null else newNode!
+				switchNode.child[order] = (newNode == null || notInnerNode()) ? null : newNode; // if isLeaf = true -> null else newNode!
 				newKey = keys[order]; 	//MIttlerer Schlüssel
 				keys[order] = null;		//keys null setzen
 				child[order+1] = null;	//child null setzen
@@ -116,13 +120,7 @@ class BTreeNode {
 		}
 	}
 	
-	
-	private boolean isLeaf() {
-		return (child[0] == null);
-	}
-	
 	boolean searchval(Comparable val){
-		System.out.println(this);
 		for(int i=0; i<child.length;i++){
 			if(keys[0] == null){
 				return false;
@@ -132,14 +130,12 @@ class BTreeNode {
 			}
 			if(keys[i].compareTo(val) == 0){
 				return true;
-			}else if(keys[i].compareTo(val) > 0){
-				if(child[i] != null){
+			}else if(keys[i].compareTo(val) > 0 && child[i] != null){
 					return child[i].searchval(val);
-				}else{
+			}else if(keys[i].compareTo(val) > 0 && notInnerNode()){
 					return false;
-				}
+			}
 				
-			} // ELSEIF END
 		}	//FOR END
 		return false;
 	}
@@ -150,6 +146,21 @@ class BTreeNode {
 			myString += keys[i] + " ";
 		}
 		return myString;
+	}
+	
+	public String print(int deep){
+		String sketch = "";
+		int i = 0;
+		for(i=0; i<deep; i++){
+			sketch += " ";
+		}
+		sketch = sketch + this+ "\n";
+		for(i = 0; i<child.length; i++){
+			if(child[i] != null){
+				sketch += child[i].print(deep+1);
+			}
+		}
+		return sketch;
 	}
 	
 	

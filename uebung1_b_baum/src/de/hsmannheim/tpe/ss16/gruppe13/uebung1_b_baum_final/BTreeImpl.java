@@ -105,6 +105,11 @@ public class BTreeImpl implements BTree{
 			return false;
 		}
 	}
+	
+	public String print() {
+		String sketch = "BTree:\n------\n";
+		return (sketch + root.print(0));
+	}
 
 	@Override
 	public void addAll(BTree otherTree) {
@@ -125,14 +130,14 @@ public class BTreeImpl implements BTree{
 
 	public void printPostorder(BTreeNode node) {
 		if(node != null){
-			for(int i=0; i < node.getReference().length; i++){
-				if(node.getReference()[i] != null){
-					printPostorder(node.getReference()[i]);
+			for(int i=0; i < node.getRef().length; i++){
+				if(node.getRef()[i] != null){
+					printPostorder(node.getRef()[i]);
 				}
 			}
-			for(int i=0; i<node.getElement().length;i++){
-				if(node.getElement()[i] != null){
-					print(node.getElement()[i] + "  ");
+			for(int i=0; i<node.getValue().length;i++){
+				if(node.getValue()[i] != null){
+					print(node.getValue()[i] + "  ");
 				}
 			}
 		}
@@ -146,14 +151,14 @@ public class BTreeImpl implements BTree{
 	
 	public void printPreorder(BTreeNode node) {
 		if(node != null){
-			for(int i=0; i<node.getElement().length;i++){
-				if(node.getElement()[i] != null){
-					print(node.getElement()[i] + "  ");
+			for(int i=0; i<node.getValue().length;i++){
+				if(node.getValue()[i] != null){
+					print(node.getValue()[i] + "  ");
 				}
 			}
-			for(int i=0; i < node.getReference().length; i++){
-				if(node.getReference()[i] != null){
-					printPostorder(node.getReference()[i]);
+			for(int i=0; i < node.getRef().length; i++){
+				if(node.getRef()[i] != null){
+					printPostorder(node.getRef()[i]);
 				}
 			}
 		}
