@@ -4,8 +4,10 @@ class BTreeNode {
 	
 	private Comparable[] keys;
 	private BTreeNode[] child;
+	private int order;
 	
-	BTreeNode(){
+	BTreeNode(int order){
+		this.order = order;
 		keys = new Comparable[2*order];
 		child = new BTreeNode[2*order+1];
 	}
@@ -71,9 +73,9 @@ class BTreeNode {
 				i += 1;
 				}
 			if(newKey != null){ //Node platzt Schlüssel(key) wird kopiert und danach gelöscht
-				switchNode = new BTreeNode();
+				switchNode = new BTreeNode(this.order);
 				for(i=0; i<order-1; i++){
-					switchNode.key[i] = key[order+1+i];
+					switchNode.keys[i] = keys[order+1+i];
 					switchNode.child[i] = child[order+1+i];
 					keys[order+1+i] = null;
 					child[order+i+1] = null;
