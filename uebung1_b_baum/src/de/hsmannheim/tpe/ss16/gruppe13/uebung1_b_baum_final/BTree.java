@@ -1,9 +1,8 @@
 package de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum_final;
 
-import de.hsmannheim.tpe.ss16.gruppe13.uebung1_b_baum_final.BTreeImpl.BTreeNode;
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
-
 public interface BTree {
+	
+	public boolean insert(String filename);
 	
 	public boolean contains(Integer o);
 	
@@ -27,7 +26,5 @@ public interface BTree {
 	
 	public void printLevelorder();
 
-	boolean insert(Comparable key, Value val);
-
-	BTreeNode insertinto(BTreeNode node, Comparable key, Value val, int order);
+	boolean insert(Comparable newKey);
 }

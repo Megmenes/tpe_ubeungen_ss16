@@ -13,8 +13,8 @@ public class BTreeDemo {
 		}
 		Integer[] search = {5,3,15,16};
 		for (int i=0;i<search.length;i++) {
-			System.out.println("Searching for : " + search[i] + " ---> " );
-			System.out.println(btree.isavail(search[i]));
+			System.out.println("Searching for : " + search[i] + " -> " );
+			System.out.println(btree.contains(i));
 		}
 		
 	}
