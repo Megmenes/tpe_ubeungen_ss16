@@ -13,7 +13,7 @@ public class BTreeImpl implements BTree{
 	 */
 	public BTreeImpl(int ordnung) {
 		this.order = ordnung;
-		this.root = new BTreeNode();
+		this.root = new BTreeNode(order);
 	}
 	
 	
@@ -30,10 +30,10 @@ public class BTreeImpl implements BTree{
 	
 	@Override
 	public boolean insert(Comparable newKey){
-		BTreeNode returnNode = new BTreeNode();
+		BTreeNode returnNode = new BTreeNode(order);
 		Comparable newElement = root.insert(newKey, returnNode);
 		if(newElement != null){
-			BTreeNode newRoot = new BTreeNode();
+			BTreeNode newRoot = new BTreeNode(order);
 			newRoot.getKeys()[0] = newElement;
 			newRoot.getChild()[0] = root;
 			newRoot.getChild()[1] = returnNode;
