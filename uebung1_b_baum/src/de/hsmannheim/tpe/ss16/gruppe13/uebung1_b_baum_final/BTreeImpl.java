@@ -99,7 +99,7 @@ public class BTreeImpl implements BTree{
 		//if root == null then Tree is empty
 		//else the Tree has Nodes and therefore
 		//is not empty
-		if(root == null) {
+		if(root.getKeys()[0] == null) {
 			return true;
 		} else {
 			return false;
@@ -125,43 +125,43 @@ public class BTreeImpl implements BTree{
 
 	@Override
 	public void printPostorder() {
-		printPostorder(this.root);
+		//printPostorder(this.root);
 	}
 
 	public void printPostorder(BTreeNode node) {
-		if(node != null){
-			for(int i=0; i < node.getRef().length; i++){
-				if(node.getRef()[i] != null){
-					printPostorder(node.getRef()[i]);
-				}
-			}
-			for(int i=0; i<node.getValue().length;i++){
-				if(node.getValue()[i] != null){
-					print(node.getValue()[i] + "  ");
-				}
-			}
-		}
+//		if(node != null){
+//			for(int i=0; i < node.getRef().length; i++){
+//				if(node.getRef()[i] != null){
+//					printPostorder(node.getRef()[i]);
+//				}
+//			}
+//			for(int i=0; i<node.getValue().length;i++){
+//				if(node.getValue()[i] != null){
+//					print(node.getValue()[i] + "  ");
+//				}
+//			}
+//		}
 	}
 	
 	
 	@Override
 	public void printPreorder() {
-		printPreorder(this.root);
+		// printPreorder(this.root);
 	}
 	
 	public void printPreorder(BTreeNode node) {
-		if(node != null){
-			for(int i=0; i<node.getValue().length;i++){
-				if(node.getValue()[i] != null){
-					print(node.getValue()[i] + "  ");
-				}
-			}
-			for(int i=0; i < node.getRef().length; i++){
-				if(node.getRef()[i] != null){
-					printPostorder(node.getRef()[i]);
-				}
-			}
-		}
+//		if(node != null){
+//			for(int i=0; i<node.getValue().length;i++){
+//				if(node.getValue()[i] != null){
+//					print(node.getValue()[i] + "  ");
+//				}
+//			}
+//			for(int i=0; i < node.getRef().length; i++){
+//				if(node.getRef()[i] != null){
+//					printPostorder(node.getRef()[i]);
+//				}
+//			}
+//		}
 	}
 
 	@Override
